@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 aliyun.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "OSSDefine.h"
 #import "OSSModel.h"
 #import "OSSBolts.h"
@@ -420,15 +419,23 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
 @implementation OSSUASettingInterceptor
 
 - (NSString *)getUserAgent {
-    static NSString * _userAgent = nil;
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
+    static NSString * userAgent = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+#if TARGET_OS_IOS
         NSString *systemName = [[[UIDevice currentDevice] systemName] stringByReplacingOccurrencesOfString:@" " withString:@"-"];
         NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
         NSString *localeIdentifier = [[NSLocale currentLocale] localeIdentifier];
-        _userAgent = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", OSSUAPrefix, OSSSDKVersion, systemName, systemVersion, localeIdentifier];
+        userAgent = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", OSSUAPrefix, OSSSDKVersion, systemName, systemVersion, localeIdentifier];
+#else
+        FTWDevice *device = [FTWDevice currentDevice];
+        NSString *systemName = [device systemName];
+        NSString *systemVersion = [device systemVersion];
+        NSString *localeIdentifier = [[NSLocale currentLocale] localeIdentifier];
+        userAgent = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",OSSUAPrefix,OSSSDKVersion,systemName,systemVersion,localeIdentifier];
+#endif
     });
-    return _userAgent;
+    return userAgent;
 }
 
 - (OSSTask *)interceptRequestMessage:(OSSAllRequestNeededMessage *)request {

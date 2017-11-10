@@ -11,7 +11,3 @@
 extern NSString* const BUCKET_NAME;
 extern NSString* const UPLOAD_OBJECT_KEY;
 extern NSString* const DOWNLOAD_OBJECT_KEY;
-
-
-@interface Constant : NSObject
-@end

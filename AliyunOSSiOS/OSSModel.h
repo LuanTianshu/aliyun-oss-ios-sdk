@@ -6,6 +6,12 @@
 //  Copyright (c) 2015 aliyun.com. All rights reserved.
 //
 
+#if TARGET_OS_IOS
+#import <UIKit/UIKit.h>
+#else
+#import "FTWDevice.h"
+#endif
+
 #import <Foundation/Foundation.h>
 
 @class OSSAllRequestNeededMessage;

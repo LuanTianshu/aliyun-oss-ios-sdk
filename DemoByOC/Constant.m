@@ -8,11 +8,6 @@
 
 #import "Constant.h"
 
-NSString * const BUCKET_NAME = @"<bucket_name>";
+NSString * const BUCKET_NAME = @"dhc-images";
 NSString * const UPLOAD_OBJECT_KEY = @"sampleObject";
-NSString * const DOWNLOAD_OBJECT_KEY = @"sampleObject";
-
-@implementation Constant
-
-
-@end
+NSString * const DOWNLOAD_OBJECT_KEY = @"workspace/demo";

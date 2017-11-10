@@ -1072,7 +1072,8 @@ int32_t const CHUNK_SIZE = 8 * 1024;
     return tempMessage;
 }
 + (NSString*)buildOperatorMsg{
-    NSString *currentCountry;
+    NSString *currentCountry = nil;
+#if TARGET_OS_IOS
     CTTelephonyNetworkInfo *telephonyInfo = [[CTTelephonyNetworkInfo alloc] init];
     CTCarrier *carrier = [telephonyInfo subscriberCellularProvider];
     if(carrier){
@@ -1081,6 +1082,7 @@ int32_t const CHUNK_SIZE = 8 * 1024;
             currentCountry = [@"[operator]: " stringByAppendingString:currentCountry];
         }
     }
+#endif
     return currentCountry;
 }
 

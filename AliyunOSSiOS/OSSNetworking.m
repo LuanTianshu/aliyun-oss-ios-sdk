@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 aliyun.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "OSSDefine.h"
 #import "OSSNetworking.h"
 #import "OSSBolts.h"
@@ -296,12 +295,9 @@
         NSURLSessionConfiguration * uploadSessionConfig = nil;
 
         if (configuration.enableBackgroundTransmitService) {
-            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-                uploadSessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.configuration.backgroundSessionIdentifier];
-            } else {
-                uploadSessionConfig = [NSURLSessionConfiguration backgroundSessionConfiguration:self.configuration.backgroundSessionIdentifier];
-            }
-        } else {
+
+        uploadSessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.configuration.backgroundSessionIdentifier];
+        }else{
             uploadSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
         }
         dataSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -395,7 +391,7 @@
         return [requestDelegate buildInternalHttpRequest];
     }] continueWithSuccessBlock:^id(OSSTask *task) {
         NSURLSessionDataTask * sessionTask = nil;
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 && self.configuration.timeoutIntervalForRequest > 0) {
+        if (self.configuration.timeoutIntervalForRequest > 0) {
             requestDelegate.internalRequest.timeoutInterval = self.configuration.timeoutIntervalForRequest;
         }
 

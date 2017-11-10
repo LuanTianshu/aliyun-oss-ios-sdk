@@ -11,8 +11,17 @@
 #ifndef OSSDefine_h
 #define OSSDefine_h
 
+#if TARGET_OS_IOS
 #define OSSUAPrefix                             @"aliyun-sdk-ios"
+#else
+#define OSSUAPrefix                             @"aliyun-sdk-mac"
+#endif
+
+#if TARGET_OS_IOS
 #define OSSSDKVersion                           @"2.6.4"
+#else
+#define OSSSDKVersion                           @"0.1.0"
+#endif
 
 #define OSSListBucketResultXMLTOKEN             @"ListBucketResult"
 #define OSSNameXMLTOKEN                         @"Name"

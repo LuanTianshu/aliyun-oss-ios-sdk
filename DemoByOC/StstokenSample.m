@@ -13,7 +13,7 @@
 
 @implementation StstokenSample
 
-const NSString* url = @"http://*.*.*.*:****/sts/getsts";//本地服务地址
+const NSString* url = @"http://30.40.38.11:3016/sts/getsts";//本地服务地址
     //如何启动本地服务可参加python 目录下httpserver.py中注释说明。*.*.*.* 为本机ip地址。****为开启本机服务的端口地址
 
 
@@ -21,7 +21,8 @@ const NSString* url = @"http://*.*.*.*:****/sts/getsts";//本地服务地址
     NSString *urlStr = [NSString stringWithFormat:@"%@",url];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *requst = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
     NSURLSessionDataTask *getStsTask = [session dataTaskWithRequest:requst completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"从服务器获取到数据");

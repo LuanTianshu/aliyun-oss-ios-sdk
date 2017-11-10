@@ -76,6 +76,49 @@
 		4CEF14F81F5522A1007010B8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216256EF1CF1B1580086458F /* SystemConfiguration.framework */; };
 		9418946C1DEB4A7800FFB760 /* AliyunOSSiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 9418946B1DEB4A7800FFB760 /* AliyunOSSiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1C3D8BD1F667021002F840A /* python in Resources */ = {isa = PBXBuildFile; fileRef = D1C3D8BC1F667021002F840A /* python */; };
+		D898A9D01FB5500700486DCC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898A9CF1FB5500700486DCC /* SystemConfiguration.framework */; };
+		D898A9D31FB5522B00486DCC /* OSSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D898A9D21FB5522B00486DCC /* OSSWindow.m */; };
+		D898A9D81FB55B2400486DCC /* FTWDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = D898A9D41FB55B2300486DCC /* FTWDevice.h */; };
+		D898A9D91FB55B2400486DCC /* FTWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D898A9D51FB55B2400486DCC /* FTWDevice.m */; };
+		D898A9DA1FB55B2400486DCC /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D898A9D61FB55B2400486DCC /* NSString+MD5.m */; };
+		D898A9DB1FB55B2400486DCC /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = D898A9D71FB55B2400486DCC /* NSString+MD5.h */; };
+		D898A9DC1FB5895700486DCC /* GetObjcetSample.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C30B7F21F61405600CDAD9B /* GetObjcetSample.m */; };
+		D898A9DE1FB58B0000486DCC /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE524761F6267BB00DD3DCF /* Constant.m */; };
+		D8B61AD81FB1D95F00B0A1D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B61AD71FB1D95F00B0A1D2 /* AppDelegate.m */; };
+		D8B61ADB1FB1D95F00B0A1D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B61ADA1FB1D95F00B0A1D2 /* ViewController.m */; };
+		D8B61ADD1FB1D95F00B0A1D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8B61ADC1FB1D95F00B0A1D2 /* Assets.xcassets */; };
+		D8B61AE01FB1D95F00B0A1D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B61ADE1FB1D95F00B0A1D2 /* Main.storyboard */; };
+		D8B61AE31FB1D95F00B0A1D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B61AE21FB1D95F00B0A1D2 /* main.m */; };
+		D8B61AEE1FB1D95F00B0A1D2 /* oss_mac_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B61AED1FB1D95F00B0A1D2 /* oss_mac_demoTests.m */; };
+		D8B61B051FB1E3A200B0A1D2 /* oss_mac_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B61AFC1FB1E3A200B0A1D2 /* oss_mac_sdk.framework */; };
+		D8B61B0C1FB1E3A200B0A1D2 /* oss_mac_sdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B61B0B1FB1E3A200B0A1D2 /* oss_mac_sdkTests.m */; };
+		D8B61B0E1FB1E3A200B0A1D2 /* oss_mac_sdk.h in Headers */ = {isa = PBXBuildFile; fileRef = D8B61AFE1FB1E3A200B0A1D2 /* oss_mac_sdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8B61B111FB1E3A200B0A1D2 /* oss_mac_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B61AFC1FB1E3A200B0A1D2 /* oss_mac_sdk.framework */; };
+		D8B61B121FB1E3A200B0A1D2 /* oss_mac_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8B61AFC1FB1E3A200B0A1D2 /* oss_mac_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8B61B1A1FB1E3B400B0A1D2 /* OSSIPv6Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 216256E11CF1835F0086458F /* OSSIPv6Adapter.m */; };
+		D8B61B1B1FB1E3B900B0A1D2 /* OSSIPv6PrefixResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 216256E31CF1835F0086458F /* OSSIPv6PrefixResolver.m */; };
+		D8B61B1C1FB1E3BD00B0A1D2 /* OSSReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 216256E51CF1835F0086458F /* OSSReachabilityManager.m */; };
+		D8B61B1D1FB1E3CA00B0A1D2 /* OSSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 21028BE21BA9AC3600C2A6BA /* OSSClient.m */; };
+		D8B61B1E1FB1E3CD00B0A1D2 /* OSSCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 21028BE41BA9AC3600C2A6BA /* OSSCompat.m */; };
+		D8B61B1F1FB1E3D000B0A1D2 /* OSSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 21028BE61BA9AC3600C2A6BA /* OSSLog.m */; };
+		D8B61B201FB1E3D400B0A1D2 /* OSSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21028BE81BA9AC3600C2A6BA /* OSSModel.m */; };
+		D8B61B211FB1E3D700B0A1D2 /* OSSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 21028BEA1BA9AC3600C2A6BA /* OSSNetworking.m */; };
+		D8B61B221FB1E3DB00B0A1D2 /* OSSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 21028BED1BA9AC3600C2A6BA /* OSSUtil.m */; };
+		D8B61B231FB1E3DE00B0A1D2 /* OSSHttpdns.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B891CD5E2F9004F8083 /* OSSHttpdns.m */; };
+		D8B61B241FB1E3E400B0A1D2 /* OSSXMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 21028BEF1BA9AC3600C2A6BA /* OSSXMLDictionary.m */; };
+		D8B61B251FB1E3EA00B0A1D2 /* OSSBolts.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B8D1CD5FE17004F8083 /* OSSBolts.m */; };
+		D8B61B261FB1E3ED00B0A1D2 /* OSSCancellationToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B8F1CD5FE17004F8083 /* OSSCancellationToken.m */; };
+		D8B61B271FB1E3F000B0A1D2 /* OSSCancellationTokenRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B911CD5FE17004F8083 /* OSSCancellationTokenRegistration.m */; };
+		D8B61B281FB1E3F400B0A1D2 /* OSSCancellationTokenSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B931CD5FE17004F8083 /* OSSCancellationTokenSource.m */; };
+		D8B61B291FB1E3F700B0A1D2 /* OSSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B951CD5FE17004F8083 /* OSSExecutor.m */; };
+		D8B61B2A1FB1E3FB00B0A1D2 /* OSSTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B971CD5FE17004F8083 /* OSSTask.m */; };
+		D8B61B2B1FB1E3FE00B0A1D2 /* OSSTaskCompletionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E1B991CD5FE17004F8083 /* OSSTaskCompletionSource.m */; };
+		D8B61B2C1FB1E40400B0A1D2 /* OSSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F1F311F8CB9C600B12B57 /* OSSReachability.m */; };
+		D8B61B2D1FB1E40800B0A1D2 /* OSSDDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F1F141F8C70E300B12B57 /* OSSDDLog.m */; };
+		D8B61B2E1FB1E40C00B0A1D2 /* OSSFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F1F161F8C70E300B12B57 /* OSSFileLogger.m */; };
+		D8B61B2F1FB1E41000B0A1D2 /* OSSNSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC152D71F9ED29B00EE12D9 /* OSSNSLogger.m */; };
+		D8B61B311FB292DD00B0A1D2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B61B301FB292DD00B0A1D2 /* libresolv.tbd */; };
+		D8B61B321FB2A00300B0A1D2 /* StstokenSample.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C30B7EF1F61372400CDAD9B /* StstokenSample.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +136,49 @@
 			remoteGlobalIDString = 21028BBB1BA9ABF500C2A6BA;
 			remoteInfo = AliyunOSSiOS;
 		};
+		D8B61AEA1FB1D95F00B0A1D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21028BB31BA9ABF500C2A6BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8B61AD31FB1D95E00B0A1D2;
+			remoteInfo = "oss-mac-demo";
+		};
+		D8B61B061FB1E3A200B0A1D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21028BB31BA9ABF500C2A6BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8B61AFB1FB1E3A200B0A1D2;
+			remoteInfo = "oss-mac-sdk";
+		};
+		D8B61B081FB1E3A200B0A1D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21028BB31BA9ABF500C2A6BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8B61AD31FB1D95E00B0A1D2;
+			remoteInfo = "oss-mac-demo";
+		};
+		D8B61B0F1FB1E3A200B0A1D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21028BB31BA9ABF500C2A6BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8B61AFB1FB1E3A200B0A1D2;
+			remoteInfo = "oss-mac-sdk";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D8B61B161FB1E3A200B0A1D2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D8B61B121FB1E3A200B0A1D2 /* oss_mac_sdk.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		21028BBC1BA9ABF500C2A6BA /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AliyunOSSiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +257,33 @@
 		4CE524761F6267BB00DD3DCF /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
 		9418946B1DEB4A7800FFB760 /* AliyunOSSiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliyunOSSiOS.h; sourceTree = "<group>"; };
 		D1C3D8BC1F667021002F840A /* python */ = {isa = PBXFileReference; lastKnownFileType = folder; path = python; sourceTree = SOURCE_ROOT; };
+		D898A9CF1FB5500700486DCC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		D898A9D11FB5522B00486DCC /* OSSWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSSWindow.h; sourceTree = "<group>"; };
+		D898A9D21FB5522B00486DCC /* OSSWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSSWindow.m; sourceTree = "<group>"; };
+		D898A9D41FB55B2300486DCC /* FTWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWDevice.h; sourceTree = "<group>"; };
+		D898A9D51FB55B2400486DCC /* FTWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWDevice.m; sourceTree = "<group>"; };
+		D898A9D61FB55B2400486DCC /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		D898A9D71FB55B2400486DCC /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		D8B61AD41FB1D95E00B0A1D2 /* oss-mac-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oss-mac-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B61AD61FB1D95F00B0A1D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D8B61AD71FB1D95F00B0A1D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D8B61AD91FB1D95F00B0A1D2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D8B61ADA1FB1D95F00B0A1D2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D8B61ADC1FB1D95F00B0A1D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D8B61ADF1FB1D95F00B0A1D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D8B61AE11FB1D95F00B0A1D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8B61AE21FB1D95F00B0A1D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D8B61AE41FB1D95F00B0A1D2 /* oss_mac_demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = oss_mac_demo.entitlements; sourceTree = "<group>"; };
+		D8B61AE91FB1D95F00B0A1D2 /* oss-mac-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "oss-mac-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B61AED1FB1D95F00B0A1D2 /* oss_mac_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oss_mac_demoTests.m; sourceTree = "<group>"; };
+		D8B61AEF1FB1D95F00B0A1D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8B61AFC1FB1E3A200B0A1D2 /* oss_mac_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = oss_mac_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B61AFE1FB1E3A200B0A1D2 /* oss_mac_sdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oss_mac_sdk.h; sourceTree = "<group>"; };
+		D8B61AFF1FB1E3A200B0A1D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8B61B041FB1E3A200B0A1D2 /* oss-mac-sdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "oss-mac-sdkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B61B0B1FB1E3A200B0A1D2 /* oss_mac_sdkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oss_mac_sdkTests.m; sourceTree = "<group>"; };
+		D8B61B0D1FB1E3A200B0A1D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8B61B301FB292DD00B0A1D2 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,12 +317,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8B61AD11FB1D95E00B0A1D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898A9D01FB5500700486DCC /* SystemConfiguration.framework in Frameworks */,
+				D8B61B111FB1E3A200B0A1D2 /* oss_mac_sdk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AE61FB1D95F00B0A1D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AF81FB1E3A200B0A1D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B61B311FB292DD00B0A1D2 /* libresolv.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61B011FB1E3A200B0A1D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B61B051FB1E3A200B0A1D2 /* oss_mac_sdk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		124FC752CC2150C34DBACDBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D898A9CF1FB5500700486DCC /* SystemConfiguration.framework */,
+				D8B61B301FB292DD00B0A1D2 /* libresolv.tbd */,
 				4C7D8BB81F8CC741005D3040 /* CoreTelephony.framework */,
 				4C7D8BB61F8CC70F005D3040 /* CFNetwork.framework */,
 				216256EF1CF1B1580086458F /* SystemConfiguration.framework */,
@@ -225,6 +371,10 @@
 				21028BBE1BA9ABF500C2A6BA /* AliyunOSSiOS */,
 				21028BCB1BA9ABF600C2A6BA /* AliyunOSSiOSTests */,
 				4C30B7BB1F6136EB00CDAD9B /* DemoByOC */,
+				D8B61AD51FB1D95F00B0A1D2 /* oss-mac-demo */,
+				D8B61AEC1FB1D95F00B0A1D2 /* oss-mac-demoTests */,
+				D8B61AFD1FB1E3A200B0A1D2 /* oss-mac-sdk */,
+				D8B61B0A1FB1E3A200B0A1D2 /* oss-mac-sdkTests */,
 				21028BBD1BA9ABF500C2A6BA /* Products */,
 				124FC752CC2150C34DBACDBC /* Frameworks */,
 			);
@@ -236,6 +386,10 @@
 				21028BBC1BA9ABF500C2A6BA /* AliyunOSSiOS.framework */,
 				21028BC71BA9ABF600C2A6BA /* AliyunOSSiOSTests.xctest */,
 				4C30B7BA1F6136EB00CDAD9B /* DemoByOC.app */,
+				D8B61AD41FB1D95E00B0A1D2 /* oss-mac-demo.app */,
+				D8B61AE91FB1D95F00B0A1D2 /* oss-mac-demoTests.xctest */,
+				D8B61AFC1FB1E3A200B0A1D2 /* oss_mac_sdk.framework */,
+				D8B61B041FB1E3A200B0A1D2 /* oss-mac-sdkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,6 +397,10 @@
 		21028BBE1BA9ABF500C2A6BA /* AliyunOSSiOS */ = {
 			isa = PBXGroup;
 			children = (
+				D898A9D41FB55B2300486DCC /* FTWDevice.h */,
+				D898A9D51FB55B2400486DCC /* FTWDevice.m */,
+				D898A9D71FB55B2400486DCC /* NSString+MD5.h */,
+				D898A9D61FB55B2400486DCC /* NSString+MD5.m */,
 				9418946B1DEB4A7800FFB760 /* AliyunOSSiOS.h */,
 				216256DF1CF1835F0086458F /* OSSIPv6 */,
 				21028C071BA9AC3C00C2A6BA /* ThirdParty */,
@@ -394,6 +552,51 @@
 			name = samples;
 			sourceTree = "<group>";
 		};
+		D8B61AD51FB1D95F00B0A1D2 /* oss-mac-demo */ = {
+			isa = PBXGroup;
+			children = (
+				D8B61AD61FB1D95F00B0A1D2 /* AppDelegate.h */,
+				D8B61AD71FB1D95F00B0A1D2 /* AppDelegate.m */,
+				D8B61AD91FB1D95F00B0A1D2 /* ViewController.h */,
+				D8B61ADA1FB1D95F00B0A1D2 /* ViewController.m */,
+				D898A9D11FB5522B00486DCC /* OSSWindow.h */,
+				D898A9D21FB5522B00486DCC /* OSSWindow.m */,
+				D8B61ADC1FB1D95F00B0A1D2 /* Assets.xcassets */,
+				D8B61ADE1FB1D95F00B0A1D2 /* Main.storyboard */,
+				D8B61AE11FB1D95F00B0A1D2 /* Info.plist */,
+				D8B61AE21FB1D95F00B0A1D2 /* main.m */,
+				D8B61AE41FB1D95F00B0A1D2 /* oss_mac_demo.entitlements */,
+			);
+			path = "oss-mac-demo";
+			sourceTree = "<group>";
+		};
+		D8B61AEC1FB1D95F00B0A1D2 /* oss-mac-demoTests */ = {
+			isa = PBXGroup;
+			children = (
+				D8B61AED1FB1D95F00B0A1D2 /* oss_mac_demoTests.m */,
+				D8B61AEF1FB1D95F00B0A1D2 /* Info.plist */,
+			);
+			path = "oss-mac-demoTests";
+			sourceTree = "<group>";
+		};
+		D8B61AFD1FB1E3A200B0A1D2 /* oss-mac-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				D8B61AFE1FB1E3A200B0A1D2 /* oss_mac_sdk.h */,
+				D8B61AFF1FB1E3A200B0A1D2 /* Info.plist */,
+			);
+			path = "oss-mac-sdk";
+			sourceTree = "<group>";
+		};
+		D8B61B0A1FB1E3A200B0A1D2 /* oss-mac-sdkTests */ = {
+			isa = PBXGroup;
+			children = (
+				D8B61B0B1FB1E3A200B0A1D2 /* oss_mac_sdkTests.m */,
+				D8B61B0D1FB1E3A200B0A1D2 /* Info.plist */,
+			);
+			path = "oss-mac-sdkTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -428,6 +631,16 @@
 				21028C031BA9AC3600C2A6BA /* OSSUtil.h in Headers */,
 				21028BFC1BA9AC3600C2A6BA /* OSSLog.h in Headers */,
 				21028C001BA9AC3600C2A6BA /* OSSNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AF91FB1E3A200B0A1D2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898A9D81FB55B2400486DCC /* FTWDevice.h in Headers */,
+				D8B61B0E1FB1E3A200B0A1D2 /* oss_mac_sdk.h in Headers */,
+				D898A9DB1FB55B2400486DCC /* NSString+MD5.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +701,80 @@
 			productReference = 4C30B7BA1F6136EB00CDAD9B /* DemoByOC.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D8B61AD31FB1D95E00B0A1D2 /* oss-mac-demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8B61AF41FB1D95F00B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-demo" */;
+			buildPhases = (
+				D8B61AD01FB1D95E00B0A1D2 /* Sources */,
+				D8B61AD11FB1D95E00B0A1D2 /* Frameworks */,
+				D8B61AD21FB1D95E00B0A1D2 /* Resources */,
+				D8B61B161FB1E3A200B0A1D2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8B61B101FB1E3A200B0A1D2 /* PBXTargetDependency */,
+			);
+			name = "oss-mac-demo";
+			productName = "oss-mac-demo";
+			productReference = D8B61AD41FB1D95E00B0A1D2 /* oss-mac-demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D8B61AE81FB1D95F00B0A1D2 /* oss-mac-demoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8B61AF51FB1D95F00B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-demoTests" */;
+			buildPhases = (
+				D8B61AE51FB1D95F00B0A1D2 /* Sources */,
+				D8B61AE61FB1D95F00B0A1D2 /* Frameworks */,
+				D8B61AE71FB1D95F00B0A1D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8B61AEB1FB1D95F00B0A1D2 /* PBXTargetDependency */,
+			);
+			name = "oss-mac-demoTests";
+			productName = "oss-mac-demoTests";
+			productReference = D8B61AE91FB1D95F00B0A1D2 /* oss-mac-demoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D8B61AFB1FB1E3A200B0A1D2 /* oss-mac-sdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8B61B131FB1E3A200B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-sdk" */;
+			buildPhases = (
+				D8B61AF71FB1E3A200B0A1D2 /* Sources */,
+				D8B61AF81FB1E3A200B0A1D2 /* Frameworks */,
+				D8B61AF91FB1E3A200B0A1D2 /* Headers */,
+				D8B61AFA1FB1E3A200B0A1D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "oss-mac-sdk";
+			productName = "oss-mac-sdk";
+			productReference = D8B61AFC1FB1E3A200B0A1D2 /* oss_mac_sdk.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D8B61B031FB1E3A200B0A1D2 /* oss-mac-sdkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8B61B171FB1E3A200B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-sdkTests" */;
+			buildPhases = (
+				D8B61B001FB1E3A200B0A1D2 /* Sources */,
+				D8B61B011FB1E3A200B0A1D2 /* Frameworks */,
+				D8B61B021FB1E3A200B0A1D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8B61B071FB1E3A200B0A1D2 /* PBXTargetDependency */,
+				D8B61B091FB1E3A200B0A1D2 /* PBXTargetDependency */,
+			);
+			name = "oss-mac-sdkTests";
+			productName = "oss-mac-sdkTests";
+			productReference = D8B61B041FB1E3A200B0A1D2 /* oss-mac-sdkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -506,7 +793,30 @@
 					};
 					4C30B7B91F6136EB00CDAD9B = {
 						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Manual;
+					};
+					D8B61AD31FB1D95E00B0A1D2 = {
+						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					D8B61AE81FB1D95F00B0A1D2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D8B61AD31FB1D95E00B0A1D2;
+					};
+					D8B61AFB1FB1E3A200B0A1D2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					D8B61B031FB1E3A200B0A1D2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D8B61AD31FB1D95E00B0A1D2;
 					};
 				};
 			};
@@ -526,6 +836,10 @@
 				21028BBB1BA9ABF500C2A6BA /* AliyunOSSiOS */,
 				21028BC61BA9ABF600C2A6BA /* AliyunOSSiOSTests */,
 				4C30B7B91F6136EB00CDAD9B /* DemoByOC */,
+				D8B61AD31FB1D95E00B0A1D2 /* oss-mac-demo */,
+				D8B61AE81FB1D95F00B0A1D2 /* oss-mac-demoTests */,
+				D8B61AFB1FB1E3A200B0A1D2 /* oss-mac-sdk */,
+				D8B61B031FB1E3A200B0A1D2 /* oss-mac-sdkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -553,6 +867,36 @@
 				4C30B7CC1F6136EB00CDAD9B /* LaunchScreen.storyboard in Resources */,
 				4C30B7C91F6136EB00CDAD9B /* Assets.xcassets in Resources */,
 				4C30B7C71F6136EB00CDAD9B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AD21FB1D95E00B0A1D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B61ADD1FB1D95F00B0A1D2 /* Assets.xcassets in Resources */,
+				D8B61AE01FB1D95F00B0A1D2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AE71FB1D95F00B0A1D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AFA1FB1E3A200B0A1D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61B021FB1E3A200B0A1D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +953,67 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8B61AD01FB1D95E00B0A1D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B61B321FB2A00300B0A1D2 /* StstokenSample.m in Sources */,
+				D898A9DC1FB5895700486DCC /* GetObjcetSample.m in Sources */,
+				D898A9DE1FB58B0000486DCC /* Constant.m in Sources */,
+				D8B61ADB1FB1D95F00B0A1D2 /* ViewController.m in Sources */,
+				D8B61AE31FB1D95F00B0A1D2 /* main.m in Sources */,
+				D8B61AD81FB1D95F00B0A1D2 /* AppDelegate.m in Sources */,
+				D898A9D31FB5522B00486DCC /* OSSWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AE51FB1D95F00B0A1D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B61AEE1FB1D95F00B0A1D2 /* oss_mac_demoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61AF71FB1E3A200B0A1D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B61B2D1FB1E40800B0A1D2 /* OSSDDLog.m in Sources */,
+				D8B61B1B1FB1E3B900B0A1D2 /* OSSIPv6PrefixResolver.m in Sources */,
+				D8B61B2B1FB1E3FE00B0A1D2 /* OSSTaskCompletionSource.m in Sources */,
+				D8B61B261FB1E3ED00B0A1D2 /* OSSCancellationToken.m in Sources */,
+				D8B61B281FB1E3F400B0A1D2 /* OSSCancellationTokenSource.m in Sources */,
+				D8B61B1C1FB1E3BD00B0A1D2 /* OSSReachabilityManager.m in Sources */,
+				D8B61B271FB1E3F000B0A1D2 /* OSSCancellationTokenRegistration.m in Sources */,
+				D8B61B251FB1E3EA00B0A1D2 /* OSSBolts.m in Sources */,
+				D8B61B2C1FB1E40400B0A1D2 /* OSSReachability.m in Sources */,
+				D8B61B201FB1E3D400B0A1D2 /* OSSModel.m in Sources */,
+				D8B61B241FB1E3E400B0A1D2 /* OSSXMLDictionary.m in Sources */,
+				D8B61B2E1FB1E40C00B0A1D2 /* OSSFileLogger.m in Sources */,
+				D8B61B221FB1E3DB00B0A1D2 /* OSSUtil.m in Sources */,
+				D8B61B1E1FB1E3CD00B0A1D2 /* OSSCompat.m in Sources */,
+				D8B61B2A1FB1E3FB00B0A1D2 /* OSSTask.m in Sources */,
+				D898A9D91FB55B2400486DCC /* FTWDevice.m in Sources */,
+				D8B61B231FB1E3DE00B0A1D2 /* OSSHttpdns.m in Sources */,
+				D8B61B1D1FB1E3CA00B0A1D2 /* OSSClient.m in Sources */,
+				D898A9DA1FB55B2400486DCC /* NSString+MD5.m in Sources */,
+				D8B61B291FB1E3F700B0A1D2 /* OSSExecutor.m in Sources */,
+				D8B61B2F1FB1E41000B0A1D2 /* OSSNSLogger.m in Sources */,
+				D8B61B1F1FB1E3D000B0A1D2 /* OSSLog.m in Sources */,
+				D8B61B1A1FB1E3B400B0A1D2 /* OSSIPv6Adapter.m in Sources */,
+				D8B61B211FB1E3D700B0A1D2 /* OSSNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8B61B001FB1E3A200B0A1D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B61B0C1FB1E3A200B0A1D2 /* oss_mac_sdkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -621,6 +1026,26 @@
 			isa = PBXTargetDependency;
 			target = 21028BBB1BA9ABF500C2A6BA /* AliyunOSSiOS */;
 			targetProxy = 4CE5246E1F623CF700DD3DCF /* PBXContainerItemProxy */;
+		};
+		D8B61AEB1FB1D95F00B0A1D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8B61AD31FB1D95E00B0A1D2 /* oss-mac-demo */;
+			targetProxy = D8B61AEA1FB1D95F00B0A1D2 /* PBXContainerItemProxy */;
+		};
+		D8B61B071FB1E3A200B0A1D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8B61AFB1FB1E3A200B0A1D2 /* oss-mac-sdk */;
+			targetProxy = D8B61B061FB1E3A200B0A1D2 /* PBXContainerItemProxy */;
+		};
+		D8B61B091FB1E3A200B0A1D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8B61AD31FB1D95E00B0A1D2 /* oss-mac-demo */;
+			targetProxy = D8B61B081FB1E3A200B0A1D2 /* PBXContainerItemProxy */;
+		};
+		D8B61B101FB1E3A200B0A1D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8B61AFB1FB1E3A200B0A1D2 /* oss-mac-sdk */;
+			targetProxy = D8B61B0F1FB1E3A200B0A1D2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -639,6 +1064,14 @@
 				4C30B7CB1F6136EB00CDAD9B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D8B61ADE1FB1D95F00B0A1D2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8B61ADF1FB1D95F00B0A1D2 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -853,8 +1286,9 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 5KG9AE2U9K;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = DemoByOC/DemoByOC.pch;
 				INFOPLIST_FILE = DemoByOC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -862,6 +1296,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = aliyun.DemoByOC001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -873,7 +1308,8 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = 5KG9AE2U9K;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = DemoByOC/DemoByOC.pch;
 				INFOPLIST_FILE = DemoByOC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -881,7 +1317,250 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = aliyun.DemoByOC001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D8B61AF01FB1D95F00B0A1D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D8B61AF11FB1D95F00B0A1D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D8B61AF21FB1D95F00B0A1D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-demoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oss-mac-demo.app/Contents/MacOS/oss-mac-demo";
+			};
+			name = Debug;
+		};
+		D8B61AF31FB1D95F00B0A1D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-demoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oss-mac-demo.app/Contents/MacOS/oss-mac-demo";
+			};
+			name = Release;
+		};
+		D8B61B141FB1E3A200B0A1D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-sdk";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D8B61B151FB1E3A200B0A1D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-sdk";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D8B61B181FB1E3A200B0A1D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-sdkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-sdkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oss-mac-demo.app/Contents/MacOS/oss-mac-demo";
+			};
+			name = Debug;
+		};
+		D8B61B191FB1E3A200B0A1D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "oss-mac-sdkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "aliyun.oss-mac-sdkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oss-mac-demo.app/Contents/MacOS/oss-mac-demo";
 			};
 			name = Release;
 		};
@@ -920,6 +1599,42 @@
 			buildConfigurations = (
 				4C30B7E51F6136EB00CDAD9B /* Debug */,
 				4C30B7E61F6136EB00CDAD9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8B61AF41FB1D95F00B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B61AF01FB1D95F00B0A1D2 /* Debug */,
+				D8B61AF11FB1D95F00B0A1D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8B61AF51FB1D95F00B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-demoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B61AF21FB1D95F00B0A1D2 /* Debug */,
+				D8B61AF31FB1D95F00B0A1D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8B61B131FB1E3A200B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-sdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B61B141FB1E3A200B0A1D2 /* Debug */,
+				D8B61B151FB1E3A200B0A1D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8B61B171FB1E3A200B0A1D2 /* Build configuration list for PBXNativeTarget "oss-mac-sdkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B61B181FB1E3A200B0A1D2 /* Debug */,
+				D8B61B191FB1E3A200B0A1D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

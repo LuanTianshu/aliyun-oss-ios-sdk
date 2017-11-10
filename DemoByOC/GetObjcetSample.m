@@ -5,6 +5,7 @@
 
 #import "GetObjcetSample.h"
 #import "AliyunOSSiOS.h"
+#import "Constant.h"
 
 OSSClient* _client;
 
