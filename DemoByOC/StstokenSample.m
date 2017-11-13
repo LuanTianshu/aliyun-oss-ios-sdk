@@ -13,7 +13,7 @@
 
 @implementation StstokenSample
 
-const NSString* url = @"http://30.40.38.11:3016/sts/getsts";//本地服务地址
+const NSString* url = @"http://*.*.*.*:****/sts/getsts";//本地服务地址
     //如何启动本地服务可参加python 目录下httpserver.py中注释说明。*.*.*.* 为本机ip地址。****为开启本机服务的端口地址
 
 

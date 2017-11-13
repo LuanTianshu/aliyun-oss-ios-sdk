@@ -251,7 +251,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
     NSString *appName = [[NSProcessInfo processInfo] processName];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? paths[0] : NSTemporaryDirectory();
-    NSString *logsDirectory = [[basePath stringByAppendingPathComponent:@"OSSLogs"] stringByAppendingPathComponent:appName];
+    NSString *logsDirectory = [[basePath stringByAppendingPathComponent:@"Logs/OSSLogs"] stringByAppendingPathComponent:appName];
 
 #endif
 
