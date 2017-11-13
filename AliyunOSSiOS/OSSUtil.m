@@ -1082,6 +1082,8 @@ int32_t const CHUNK_SIZE = 8 * 1024;
             currentCountry = [@"[operator]: " stringByAppendingString:currentCountry];
         }
     }
+#else
+    currentCountry = @"OS X";
 #endif
     return currentCountry;
 }
