@@ -241,21 +241,19 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
  * Returns the path to the default logs directory.
  * If the logs directory doesn't exist, this method automatically creates it.
  **/
-- (NSString *)defaultLogsDirectory {
+- (NSString *)defaultLogsDirectory
+{
+    NSString *logsDir;
 #if TARGET_OS_IPHONE
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *baseDir = paths.firstObject;
-    NSString *logsDirectory = [baseDir stringByAppendingPathComponent:@"OSSLogs"];
-
+    logsDir = [paths[0] stringByAppendingPathComponent:@"OSSLogs"];
 #else
-    NSString *appName = [[NSProcessInfo processInfo] processName];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? paths[0] : NSTemporaryDirectory();
-    NSString *logsDirectory = [[basePath stringByAppendingPathComponent:@"Logs/OSSLogs"] stringByAppendingPathComponent:appName];
-
+    NSString *suffixPath = [NSString stringWithFormat:@"Logs/%@/OSSLogs",[self appName]];
+    logsDir = [paths[0] stringByAppendingPathComponent:suffixPath];
 #endif
 
-    return logsDirectory;
+    return logsDir;
 }
 
 - (NSString *)logsDirectory {
@@ -277,7 +275,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 }
 
 - (BOOL)isLogFile:(NSString *)fileName {
-    NSString *appName = [self applicationName];
+    NSString *appName = [self appName];
 
     BOOL hasProperPrefix = [fileName hasPrefix:appName];
     BOOL hasProperSuffix = [fileName hasSuffix:@".log"];
@@ -417,7 +415,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //if you change newLogFileName , then  change isLogFile method also accordingly
 - (NSString *)newLogFileName {
-    NSString *appName = [self applicationName];
+    NSString *appName = [self appName];
 
     NSDateFormatter *dateFormatter = [self logFileDateFormatter];
     NSString *formattedDate = [dateFormatter stringFromDate:[NSDate date]];
@@ -483,23 +481,20 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 #pragma mark Utility
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (NSString *)applicationName {
-    static NSString *_appName;
+- (NSString *)appName
+{
+    static NSString *appName;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
-
-        if (!_appName) {
-            _appName = [[NSProcessInfo processInfo] processName];
-        }
-
-        if (!_appName) {
-            _appName = @"";
-        }
+#if TARGET_OS_IOS
+        appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+#else
+        appName = [[NSProcessInfo processInfo] processName];
+#endif
     });
 
-    return _appName;
+    return appName;
 }
 
 @end
