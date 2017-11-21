@@ -31,15 +31,15 @@
 // So we use primitive logging macros around NSLog.
 // We maintain the NS prefix on the macros to be explicit about the fact that we're using NSLog.
 
-#ifndef DD_NSLOG_LEVEL
-    #define DD_NSLOG_LEVEL 2
+#ifndef OSSDD_NSLOG_LEVEL
+    #define OSSDD_NSLOG_LEVEL 2
 #endif
 
-#define NSLogError(frmt, ...)    do{ if(DD_NSLOG_LEVEL >= 1) NSLog((frmt), ##__VA_ARGS__); } while(0)
-#define NSLogWarn(frmt, ...)     do{ if(DD_NSLOG_LEVEL >= 2) NSLog((frmt), ##__VA_ARGS__); } while(0)
-#define NSLogInfo(frmt, ...)     do{ if(DD_NSLOG_LEVEL >= 3) NSLog((frmt), ##__VA_ARGS__); } while(0)
-#define NSLogDebug(frmt, ...)    do{ if(DD_NSLOG_LEVEL >= 4) NSLog((frmt), ##__VA_ARGS__); } while(0)
-#define NSLogVerbose(frmt, ...)  do{ if(DD_NSLOG_LEVEL >= 5) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define OSSNSLogError(frmt, ...)    do{ if(OSSDD_NSLOG_LEVEL >= 1) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define OSSNSLogWarn(frmt, ...)     do{ if(OSSDD_NSLOG_LEVEL >= 2) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define OSSNSLogInfo(frmt, ...)     do{ if(OSSDD_NSLOG_LEVEL >= 3) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define OSSNSLogDebug(frmt, ...)    do{ if(OSSDD_NSLOG_LEVEL >= 4) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define OSSNSLogVerbose(frmt, ...)  do{ if(OSSDD_NSLOG_LEVEL >= 5) NSLog((frmt), ##__VA_ARGS__); } while(0)
 
 
 #if TARGET_OS_IPHONE
@@ -95,8 +95,8 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
         [self addObserver:self forKeyPath:NSStringFromSelector(@selector(maximumNumberOfLogFiles)) options:kvoOptions context:nil];
         [self addObserver:self forKeyPath:NSStringFromSelector(@selector(logFilesDiskQuota)) options:kvoOptions context:nil];
 
-        NSLogVerbose(@"DDFileLogManagerDefault: logsDirectory:\n%@", [self logsDirectory]);
-        NSLogVerbose(@"DDFileLogManagerDefault: sortedLogFileNames:\n%@", [self sortedLogFileNames]);
+        OSSNSLogVerbose(@"DDFileLogManagerDefault: logsDirectory:\n%@", [self logsDirectory]);
+        OSSNSLogVerbose(@"DDFileLogManagerDefault: sortedLogFileNames:\n%@", [self sortedLogFileNames]);
     }
 
     return self;
@@ -157,7 +157,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(maximumNumberOfLogFiles))] ||
         [keyPath isEqualToString:NSStringFromSelector(@selector(logFilesDiskQuota))]) {
-        NSLogInfo(@"DDFileLogManagerDefault: Responding to configuration change: %@", keyPath);
+        OSSNSLogInfo(@"DDFileLogManagerDefault: Responding to configuration change: %@", keyPath);
 
         dispatch_async([OSSDDLog loggingQueue], ^{ @autoreleasepool {
                                                     [self deleteOldLogFiles];
@@ -173,7 +173,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
  * Deletes archived log files that exceed the maximumNumberOfLogFiles or logFilesDiskQuota configuration values.
  **/
 - (void)deleteOldLogFiles {
-    NSLogVerbose(@"OSSDDLogFileManagerDefault: deleteOldLogFiles");
+    OSSNSLogVerbose(@"OSSDDLogFileManagerDefault: deleteOldLogFiles");
 
     NSArray *sortedLogFileInfos = [self sortedLogFileInfos];
 
@@ -226,7 +226,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
         for (NSUInteger i = firstIndexToDelete; i < sortedLogFileInfos.count; i++) {
             OSSDDLogFileInfo *logFileInfo = sortedLogFileInfos[i];
 
-            NSLogInfo(@"DDLogFileManagerDefault: Deleting file: %@", logFileInfo.fileName);
+            OSSNSLogInfo(@"DDLogFileManagerDefault: Deleting file: %@", logFileInfo.fileName);
 
             [[NSFileManager defaultManager] removeItemAtPath:logFileInfo.filePath error:nil];
         }
@@ -241,18 +241,17 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
  * Returns the path to the default logs directory.
  * If the logs directory doesn't exist, this method automatically creates it.
  **/
-- (NSString *)defaultLogsDirectory
-{
+- (NSString *)defaultLogsDirectory {
     NSString *logsDir;
 #if TARGET_OS_IPHONE
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     logsDir = [paths[0] stringByAppendingPathComponent:@"OSSLogs"];
 #else
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *suffixPath = [NSString stringWithFormat:@"Logs/%@/OSSLogs",[self appName]];
+    NSString *suffixPath = [NSString stringWithFormat:@"Logs/%@/OSSLogs",[self applicationName]];
     logsDir = [paths[0] stringByAppendingPathComponent:suffixPath];
 #endif
-
+    
     return logsDir;
 }
 
@@ -267,7 +266,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
                                        withIntermediateDirectories:YES
                                                         attributes:nil
                                                              error:&err]) {
-            NSLogError(@"DDFileLogManagerDefault: Error creating logsDirectory: %@", err);
+            OSSNSLogError(@"DDFileLogManagerDefault: Error creating logsDirectory: %@", err);
         }
     }
 
@@ -275,7 +274,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 }
 
 - (BOOL)isLogFile:(NSString *)fileName {
-    NSString *appName = [self appName];
+    NSString *appName = [self applicationName];
 
     BOOL hasProperPrefix = [fileName hasPrefix:appName];
     BOOL hasProperSuffix = [fileName hasSuffix:@".log"];
@@ -415,7 +414,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //if you change newLogFileName , then  change isLogFile method also accordingly
 - (NSString *)newLogFileName {
-    NSString *appName = [self appName];
+    NSString *appName = [self applicationName];
 
     NSDateFormatter *dateFormatter = [self logFileDateFormatter];
     NSString *formattedDate = [dateFormatter stringFromDate:[NSDate date]];
@@ -446,7 +445,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
         NSString *filePath = [logsDirectory stringByAppendingPathComponent:actualFileName];
 
         if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-            NSLogVerbose(@"DDLogFileManagerDefault: Creating new log file: %@", actualFileName);
+            OSSNSLogVerbose(@"DDLogFileManagerDefault: Creating new log file: %@", actualFileName);
 
             NSDictionary *attributes = nil;
 
@@ -481,11 +480,10 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 #pragma mark Utility
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (NSString *)appName
-{
+- (NSString *)applicationName {
     static NSString *appName;
     static dispatch_once_t onceToken;
-
+    
     dispatch_once(&onceToken, ^{
 #if TARGET_OS_IOS
         appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
@@ -493,7 +491,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
         appName = [[NSProcessInfo processInfo] processName];
 #endif
     });
-
+    
     return appName;
 }
 
@@ -737,10 +735,10 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 
     NSDate *logFileRollingDate = [NSDate dateWithTimeIntervalSinceReferenceDate:ti];
 
-    NSLogVerbose(@"DDFileLogger: scheduleTimerToRollLogFileDueToAge");
+    OSSNSLogVerbose(@"DDFileLogger: scheduleTimerToRollLogFileDueToAge");
 
-    NSLogVerbose(@"DDFileLogger: logFileCreationDate: %@", logFileCreationDate);
-    NSLogVerbose(@"DDFileLogger: logFileRollingDate : %@", logFileRollingDate);
+    OSSNSLogVerbose(@"DDFileLogger: logFileCreationDate: %@", logFileCreationDate);
+    OSSNSLogVerbose(@"DDFileLogger: logFileRollingDate : %@", logFileRollingDate);
 
     _rollingTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, self.loggerQueue);
 
@@ -798,7 +796,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
 }
 
 - (void)rollLogFileNow {
-    NSLogVerbose(@"OSSDDFileLogger: rollLogFileNow");
+    OSSNSLogVerbose(@"OSSDDFileLogger: rollLogFileNow");
 
     if (_currentLogFileHandle == nil) {
         return;
@@ -848,7 +846,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
         unsigned long long fileSize = [_currentLogFileHandle offsetInFile];
 
         if (fileSize >= _maximumFileSize) {
-            NSLogVerbose(@"DDFileLogger: Rolling log file due to size (%qu)...", fileSize);
+            OSSNSLogVerbose(@"DDFileLogger: Rolling log file due to size (%qu)...", fileSize);
 
             [self rollLogFileNow];
         }
@@ -908,7 +906,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
         #endif
 
             if (!_doNotReuseLogFiles && !mostRecentLogFileInfo.isArchived && !shouldArchiveMostRecent) {
-                NSLogVerbose(@"DDFileLogger: Resuming logging with file %@", mostRecentLogFileInfo.fileName);
+                OSSNSLogVerbose(@"DDFileLogger: Resuming logging with file %@", mostRecentLogFileInfo.fileName);
 
                 _currentLogFileInfo = mostRecentLogFileInfo;
             } else {
@@ -952,7 +950,7 @@ unsigned long long const osskDDDefaultLogFilesDiskQuota   = 5 * 1024 * 1024; // 
                     );
     
             dispatch_source_set_event_handler(_currentLogFileVnode, ^{ @autoreleasepool {
-                                                                          NSLogInfo(@"OSSDDFileLogger: Current logfile was moved. Rolling it and creating a new one");
+                                                                          OSSNSLogInfo(@"OSSDDFileLogger: Current logfile was moved. Rolling it and creating a new one");
                                                                           [self rollLogFileNow];
                                                                       } });
 
@@ -1004,10 +1002,10 @@ static int exception_count = 0;
             exception_count++;
 
             if (exception_count <= 10) {
-                NSLogError(@"DDFileLogger.logMessage: %@", exception);
+                OSSNSLogError(@"DDFileLogger.logMessage: %@", exception);
 
                 if (exception_count == 10) {
-                    NSLogError(@"DDFileLogger.logMessage: Too many exceptions -- will not log any more of them.");
+                    OSSNSLogError(@"DDFileLogger.logMessage: Too many exceptions -- will not log any more of them.");
                 }
             }
         }
@@ -1214,17 +1212,17 @@ static int exception_count = 0;
 
         NSString *newFilePath = [fileDir stringByAppendingPathComponent:newFileName];
 
-        NSLogVerbose(@"DDLogFileInfo: Renaming file: '%@' -> '%@'", self.fileName, newFileName);
+        OSSNSLogVerbose(@"DDLogFileInfo: Renaming file: '%@' -> '%@'", self.fileName, newFileName);
 
         NSError *error = nil;
 
         if ([[NSFileManager defaultManager] fileExistsAtPath:newFilePath] &&
             ![[NSFileManager defaultManager] removeItemAtPath:newFilePath error:&error]) {
-            NSLogError(@"DDLogFileInfo: Error deleting archive (%@): %@", self.fileName, error);
+            OSSNSLogError(@"DDLogFileInfo: Error deleting archive (%@): %@", self.fileName, error);
         }
 
         if (![[NSFileManager defaultManager] moveItemAtPath:filePath toPath:newFilePath error:&error]) {
-            NSLogError(@"DDLogFileInfo: Error renaming file (%@): %@", self.fileName, error);
+            OSSNSLogError(@"DDLogFileInfo: Error renaming file (%@): %@", self.fileName, error);
         }
 
         filePath = newFilePath;
@@ -1389,7 +1387,7 @@ static int exception_count = 0;
     int result = setxattr(path, name, NULL, 0, 0, 0);
 
     if (result < 0) {
-        NSLogError(@"DDLogFileInfo: setxattr(%@, %@): error = %s",
+        OSSNSLogError(@"DDLogFileInfo: setxattr(%@, %@): error = %s",
                    attrName,
                    filePath,
                    strerror(errno));
@@ -1403,7 +1401,7 @@ static int exception_count = 0;
     int result = removexattr(path, name, 0);
 
     if (result < 0 && errno != ENOATTR) {
-        NSLogError(@"DDLogFileInfo: removexattr(%@, %@): error = %s",
+        OSSNSLogError(@"DDLogFileInfo: removexattr(%@, %@): error = %s",
                    attrName,
                    self.fileName,
                    strerror(errno));

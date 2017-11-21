@@ -55,17 +55,6 @@
 
 @implementation OSSXMLDictionaryParser
 
-+ (OSSXMLDictionaryParser *)sharedInstance
-{
-    static dispatch_once_t once;
-    static OSSXMLDictionaryParser *sharedInstance;
-    dispatch_once(&once, ^{
-        
-        sharedInstance = [[OSSXMLDictionaryParser alloc] init];
-    });
-    return sharedInstance;
-}
-
 - (id)init
 {
     if ((self = [super init]))
@@ -94,10 +83,26 @@
     return copy;
 }
 
+#pragma mark - Public Methods
+
++ (OSSXMLDictionaryParser *)sharedInstance
+{
+    static dispatch_once_t once;
+    static OSSXMLDictionaryParser *sharedInstance;
+    dispatch_once(&once, ^{
+        
+        sharedInstance = [[OSSXMLDictionaryParser alloc] init];
+    });
+    return sharedInstance;
+}
+
 - (NSDictionary *)dictionaryWithParser:(NSXMLParser *)parser
 {
     [parser setDelegate:self];
-    [parser parse];
+    BOOL succeed = [parser parse];
+#ifdef DEBUG
+    NSLog(@"%@",(succeed?@"YES":@"NO"));
+#endif
     id result = _root;
     _root = nil;
     _stack = nil;
@@ -123,6 +128,8 @@
 	return [self dictionaryWithData:data];
 }
 
+#pragma mark - Private Methods
+
 + (NSString *)XMLStringForNode:(id)node withNodeName:(NSString *)nodeName
 {	
     if ([node isKindOfClass:[NSArray class]])
@@ -136,14 +143,14 @@
     }
     else if ([node isKindOfClass:[NSDictionary class]])
     {
-        NSDictionary *attributes = [(NSDictionary *)node attributes];
+        NSDictionary *attributes = [(NSDictionary *)node oss_attributes];
         NSMutableString *attributeString = [NSMutableString string];
         for (NSString *key in [attributes allKeys])
         {
-            [attributeString appendFormat:@" %@=\"%@\"", [[key description] XMLEncodedString], [[attributes[key] description] XMLEncodedString]];
+            [attributeString appendFormat:@" %@=\"%@\"", [[key description] oss_XMLEncodedString], [[attributes[key] description] oss_XMLEncodedString]];
         }
         
-        NSString *innerXML = [node innerXML];
+        NSString *innerXML = [node oss_innerXML];
         if ([innerXML length])
         {
             return [NSString stringWithFormat:@"<%1$@%2$@>%3$@</%1$@>", nodeName, attributeString, innerXML];
@@ -155,7 +162,7 @@
     }
     else
     {
-        return [NSString stringWithFormat:@"<%1$@>%2$@</%1$@>", nodeName, [[node description] XMLEncodedString]];
+        return [NSString stringWithFormat:@"<%1$@>%2$@</%1$@>", nodeName, [[node description] oss_XMLEncodedString]];
     }
 }
 
@@ -196,6 +203,32 @@
 		[_text appendString:text];
 	}
 }
+
+- (NSString *)nameForNode:(NSDictionary *)node inDictionary:(NSDictionary *)dict
+{
+    if (node.oss_nodeName)
+    {
+        return node.oss_nodeName;
+    }
+    else
+    {
+        for (NSString *name in dict)
+        {
+            id object = dict[name];
+            if (object == node)
+            {
+                return name;
+            }
+            else if ([object isKindOfClass:[NSArray class]] && [object containsObject:node])
+            {
+                return name;
+            }
+        }
+    }
+    return nil;
+}
+
+#pragma mark - NSXMLParserDelegate mehods
 
 - (void)parser:(__unused NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(__unused NSString *)namespaceURI qualifiedName:(__unused NSString *)qName attributes:(NSDictionary *)attributeDict
 {	
@@ -286,30 +319,6 @@
 	}
 }
 
-- (NSString *)nameForNode:(NSDictionary *)node inDictionary:(NSDictionary *)dict
-{
-	if (node.nodeName)
-	{
-		return node.nodeName;
-	}
-	else
-	{
-		for (NSString *name in dict)
-		{
-			id object = dict[name];
-			if (object == node)
-			{
-				return name;
-			}
-			else if ([object isKindOfClass:[NSArray class]] && [object containsObject:node])
-			{
-				return name;
-			}
-		}
-	}
-	return nil;
-}
-
 - (void)parser:(__unused NSXMLParser *)parser didEndElement:(__unused NSString *)elementName namespaceURI:(__unused NSString *)namespaceURI qualifiedName:(__unused NSString *)qName
 {	
 	[self endText];
@@ -317,25 +326,25 @@
     NSMutableDictionary *top = [_stack lastObject];
     [_stack removeLastObject];
     
-	if (!top.attributes && !top.childNodes && !top.comments)
+	if (!top.oss_attributes && !top.oss_childNodes && !top.oss_comments)
     {
         NSMutableDictionary *newTop = [_stack lastObject];
         NSString *nodeName = [self nameForNode:top inDictionary:newTop];
         if (nodeName)
         {
             id parentNode = newTop[nodeName];
-            if (top.innerText && _collapseTextNodes)
+            if (top.oss_innerText && _collapseTextNodes)
             {
                 if ([parentNode isKindOfClass:[NSArray class]])
                 {
-                    parentNode[[parentNode count] - 1] = top.innerText;
+                    parentNode[[parentNode count] - 1] = top.oss_innerText;
                 }
                 else
                 {
-                    newTop[nodeName] = top.innerText;
+                    newTop[nodeName] = top.oss_innerText;
                 }
             }
-            else if (!top.innerText && _stripEmptyNodes)
+            else if (!top.oss_innerText && _stripEmptyNodes)
             {
                 if ([parentNode isKindOfClass:[NSArray class]])
                 {
@@ -346,7 +355,7 @@
                     [newTop removeObjectForKey:nodeName];
                 }
             }
-            else if (!top.innerText && !_collapseTextNodes && !_stripEmptyNodes)
+            else if (!top.oss_innerText && !_collapseTextNodes && !_stripEmptyNodes)
             {
                 top[OSSXMLDictionaryTextKey] = @"";
             }
@@ -387,27 +396,27 @@
 
 @implementation NSDictionary(OSSXMLDictionary)
 
-+ (NSDictionary *)dictionaryWithXMLParser:(NSXMLParser *)parser
++ (NSDictionary *)oss_dictionaryWithXMLParser:(NSXMLParser *)parser
 {
 	return [[[OSSXMLDictionaryParser sharedInstance] copy] dictionaryWithParser:parser];
 }
 
-+ (NSDictionary *)dictionaryWithXMLData:(NSData *)data
++ (NSDictionary *)oss_dictionaryWithXMLData:(NSData *)data
 {
 	return [[[OSSXMLDictionaryParser sharedInstance] copy] dictionaryWithData:data];
 }
 
-+ (NSDictionary *)dictionaryWithXMLString:(NSString *)string
++ (NSDictionary *)oss_dictionaryWithXMLString:(NSString *)string
 {
 	return [[[OSSXMLDictionaryParser sharedInstance] copy] dictionaryWithString:string];
 }
 
-+ (NSDictionary *)dictionaryWithXMLFile:(NSString *)path
++ (NSDictionary *)oss_dictionaryWithXMLFile:(NSString *)path
 {
 	return [[[OSSXMLDictionaryParser sharedInstance] copy] dictionaryWithFile:path];
 }
 
-- (NSDictionary *)attributes
+- (NSDictionary *)oss_attributes
 {
 	NSDictionary *attributes = self[OSSXMLDictionaryAttributesKey];
 	if (attributes)
@@ -431,7 +440,7 @@
 	return nil;
 }
 
-- (NSDictionary *)childNodes
+- (NSDictionary *)oss_childNodes
 {	
 	NSMutableDictionary *filteredDict = [self mutableCopy];
 	[filteredDict removeObjectsForKeys:@[OSSXMLDictionaryAttributesKey, OSSXMLDictionaryCommentsKey, OSSXMLDictionaryTextKey, OSSXMLDictionaryNodeNameKey]];
@@ -445,17 +454,17 @@
     return [filteredDict count]? filteredDict: nil;
 }
 
-- (NSArray *)comments
+- (NSArray *)oss_comments
 {
 	return self[OSSXMLDictionaryCommentsKey];
 }
 
-- (NSString *)nodeName
+- (NSString *)oss_nodeName
 {
 	return self[OSSXMLDictionaryNodeNameKey];
 }
 
-- (id)innerText
+- (id)oss_innerText
 {	
 	id text = self[OSSXMLDictionaryTextKey];
 	if ([text isKindOfClass:[NSArray class]])
@@ -468,44 +477,44 @@
 	}
 }
 
-- (NSString *)innerXML
+- (NSString *)oss_innerXML
 {	
 	NSMutableArray *nodes = [NSMutableArray array];
 	
-	for (NSString *comment in [self comments])
+	for (NSString *comment in [self oss_comments])
 	{
-        [nodes addObject:[NSString stringWithFormat:@"<!--%@-->", [comment XMLEncodedString]]];
+        [nodes addObject:[NSString stringWithFormat:@"<!--%@-->", [comment oss_XMLEncodedString]]];
 	}
     
-    NSDictionary *childNodes = [self childNodes];
+    NSDictionary *childNodes = [self oss_childNodes];
 	for (NSString *key in childNodes)
 	{
 		[nodes addObject:[OSSXMLDictionaryParser XMLStringForNode:childNodes[key] withNodeName:key]];
 	}
 	
-    NSString *text = [self innerText];
+    NSString *text = [self oss_innerText];
     if (text)
     {
-        [nodes addObject:[text XMLEncodedString]];
+        [nodes addObject:[text oss_XMLEncodedString]];
     }
 	
 	return [nodes componentsJoinedByString:@"\n"];
 }
 
-- (NSString *)XMLString
+- (NSString *)oss_XMLString
 {
-    if ([self count] == 1 && ![self nodeName])
+    if ([self count] == 1 && ![self oss_nodeName])
     {
         //ignore outermost dictionary
-        return [self innerXML];
+        return [self oss_innerXML];
     }
     else
     {
-        return [OSSXMLDictionaryParser XMLStringForNode:self withNodeName:[self nodeName] ?: @"root"];
+        return [OSSXMLDictionaryParser XMLStringForNode:self withNodeName:[self oss_nodeName] ?: @"root"];
     }
 }
 
-- (NSArray *)arrayValueForKeyPath:(NSString *)keyPath
+- (NSArray *)oss_arrayValueForKeyPath:(NSString *)keyPath
 {
     id value = [self valueForKeyPath:keyPath];
     if (value && ![value isKindOfClass:[NSArray class]])
@@ -515,7 +524,7 @@
     return value;
 }
 
-- (NSString *)stringValueForKeyPath:(NSString *)keyPath
+- (NSString *)oss_stringValueForKeyPath:(NSString *)keyPath
 {
     id value = [self valueForKeyPath:keyPath];
     if ([value isKindOfClass:[NSArray class]])
@@ -524,12 +533,12 @@
     }
     if ([value isKindOfClass:[NSDictionary class]])
     {
-        return [(NSDictionary *)value innerText];
+        return [(NSDictionary *)value oss_innerText];
     }
     return value;
 }
 
-- (NSDictionary *)dictionaryValueForKeyPath:(NSString *)keyPath
+- (NSDictionary *)oss_dictionaryValueForKeyPath:(NSString *)keyPath
 {
     id value = [self valueForKeyPath:keyPath];
     if ([value isKindOfClass:[NSArray class]])
@@ -548,7 +557,7 @@
 
 @implementation NSString (OSSXMLDictionary)
 
-- (NSString *)XMLEncodedString
+- (NSString *)oss_XMLEncodedString
 {	
 	return [[[[[self stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]
                stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"]

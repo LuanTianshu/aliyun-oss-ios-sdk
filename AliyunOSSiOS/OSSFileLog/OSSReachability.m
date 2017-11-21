@@ -36,6 +36,7 @@ NSString *ossReachabilityChangedNotification = @"ossNetworkReachabilityChangedNo
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char* comment)
 {
 #if kShouldPrintReachabilityFlags
+
     NSLog(@"Reachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
           (flags & kSCNetworkReachabilityFlagsIsWWAN)				? 'W' : '-',
           (flags & kSCNetworkReachabilityFlagsReachable)            ? 'R' : '-',
@@ -202,16 +203,16 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
             returnValue = ReachableViaWiFi;
         }
     }
-
 #if TARGET_OS_IOS
-    if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)
-    {
-        /*
+	if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)
+	{
+		/*
          ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.
          */
-        returnValue = ReachableViaWWAN;
-    }
+		returnValue = ReachableViaWWAN;
+	}
 #endif
+    
 	return returnValue;
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OSSFileLogger.h"
 
 @class OSSFederationToken;
 
@@ -17,7 +16,7 @@
 + (NSString *)calBase64WithData:(uint8_t *)data;
 + (NSString *)encodeURL:(NSString *)url;
 + (NSData *)constructHttpBodyFromPartInfos:(NSArray *)partInfos;
-+ (NSData *)constructHttpBodyForCreateBucketWithLocation:(NSString *)location;
++ (NSData *)constructHttpBodyForCreateBucketWithLocation:(NSString *)location __attribute__((deprecated("deprecated!")));
 + (BOOL)validateBucketName:(NSString *)bucketName;
 + (BOOL)validateObjectKey:(NSString *)objectKey;
 + (BOOL)isOssOriginBucketHost:(NSString *)host;
@@ -36,6 +35,15 @@
 + (NSString *)getRelativePath:(NSString *)fullPath;
 + (NSString *)detemineMimeTypeForFilePath:(NSString *)filePath uploadName:(NSString *)uploadName;
 + (BOOL)hasPhoneFreeSpace;
++ (NSData *)fileMD5:(NSString *)path;
 + (NSString*)buildNetWorkConnectedMsg;
 + (NSString*)buildOperatorMsg;
+@end
+
+@interface NSString (OSS)
+
+- (NSString *)oss_trim;
+- (BOOL)oss_isNotEmpty;
+- (NSString *)oss_stringByAppendingPathComponentForURL:(NSString *)path;
+
 @end

@@ -1043,7 +1043,7 @@ int32_t const CHUNK_SIZE = 8 * 1024;
 }
 
 + (BOOL)hasPhoneFreeSpace{
-    NSError *error = nil;
+    NSError *error;
     NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
     if(error) return NO;
     long long space = [[attrs objectForKey:NSFileSystemFreeSize] longLongValue];
@@ -1072,7 +1072,7 @@ int32_t const CHUNK_SIZE = 8 * 1024;
     return tempMessage;
 }
 + (NSString*)buildOperatorMsg{
-    NSString *currentCountry = nil;
+    NSString *currentCountry;
 #if TARGET_OS_IOS
     CTTelephonyNetworkInfo *telephonyInfo = [[CTTelephonyNetworkInfo alloc] init];
     CTCarrier *carrier = [telephonyInfo subscriberCellularProvider];
@@ -1083,10 +1083,32 @@ int32_t const CHUNK_SIZE = 8 * 1024;
         }
     }
 #else
-    currentCountry = @"OS X";
+    // TODO 如何获取mac上面的currentCountry
+    currentCountry = @"UnKnown";
 #endif
     return currentCountry;
 }
 
+@end
+
+@implementation NSString (OSS)
+
+- (NSString *)oss_trim {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (BOOL)oss_isNotEmpty
+{
+    return ![[self oss_trim] isEqualToString:@""];
+}
+
+- (NSString *)oss_stringByAppendingPathComponentForURL:(NSString *)aString
+{
+    if ([self hasSuffix:@"/"]) {
+        return [NSString stringWithFormat:@"%@%@", self, aString];
+    } else {
+        return [NSString stringWithFormat:@"%@/%@", self, aString];
+    }
+}
 
 @end

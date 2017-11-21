@@ -6,17 +6,12 @@
 //  Copyright (c) 2015 aliyun.com. All rights reserved.
 //
 
-#if TARGET_OS_IOS
-#import <UIKit/UIKit.h>
-#else
-#import "FTWDevice.h"
-#endif
-
 #import <Foundation/Foundation.h>
 
 @class OSSAllRequestNeededMessage;
 @class OSSFederationToken;
 @class OSSTask;
+@class OSSClientConfiguration;
 
 typedef NS_ENUM(NSInteger, OSSOperationType) {
     OSSOperationTypeGetService,
@@ -53,19 +48,12 @@ typedef NS_ENUM(NSInteger, OSSClientErrorCODE) {
 
 typedef void (^OSSNetworkingUploadProgressBlock) (int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend);
 typedef void (^OSSNetworkingDownloadProgressBlock) (int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite);
+typedef void (^OSSNetworkingRetryBlock) (void);
 typedef void (^OSSNetworkingCompletionHandlerBlock) (id responseObject, NSError *error);
 typedef void (^OSSNetworkingOnRecieveDataBlock) (NSData * data);
 
 typedef NSString * (^OSSCustomSignContentBlock) (NSString * contentToSign, NSError **error);
-typedef OSSFederationToken * (^OSSGetFederationTokenBlock) ();
-
-/**
- Categories NSString
- */
-@interface NSString (OSS)
-- (NSString *)oss_stringByAppendingPathComponentForURL:(NSString *)aString;
-- (NSString *)oss_trim;
-@end
+typedef OSSFederationToken * (^OSSGetFederationTokenBlock) (void);
 
 /**
  Categories NSDictionary
@@ -78,7 +66,6 @@ typedef OSSFederationToken * (^OSSGetFederationTokenBlock) ();
  Categories NSDate
  */
 @interface NSDate (OSS)
-+ (void)oss_setStandardTimeIntervalSince1970:(NSTimeInterval)standardTime;
 + (void)oss_setClockSkew:(NSTimeInterval)clockSkew;
 + (NSDate *)oss_dateFromString:(NSString *)string;
 + (NSDate *)oss_clockSkewFixedDate;
@@ -157,7 +144,7 @@ TODOTODO
  */
 @interface OSSFederationCredentialProvider : NSObject <OSSCredentialProvider>
 @property (nonatomic, strong) OSSFederationToken * cachedToken;
-@property (nonatomic, copy) OSSFederationToken * (^federationTokenGetter)();
+@property (nonatomic, copy) OSSFederationToken * (^federationTokenGetter)(void);
 
 /**
  During the task execution, this method is called to get the new STS token.
@@ -229,6 +216,11 @@ Sets the session Id for background file transmission
 @property (nonatomic, strong) NSNumber * proxyPort;
 
 /**
+ Sets UA
+ */
+@property (nonatomic, strong) NSString * userAgentMark;
+
+/**
  Sets CName excluded list.
  */
 @property (nonatomic, strong, setter=setCnameExcludeList:) NSArray * cnameExcludeList;
@@ -252,6 +244,8 @@ Sets the session Id for background file transmission
  Updates the UA when creating the request.
  */
 @interface OSSUASettingInterceptor : NSObject <OSSRequestInterceptor>
+@property (nonatomic, weak) OSSClientConfiguration *clientConfiguration;
+- (instancetype)initWithClientConfiguration:(OSSClientConfiguration *) clientConfiguration;
 @end
 
 /**
@@ -409,7 +403,7 @@ It's a unique Id represents this request. This is used for troubleshooting when 
  The bucket location
  For more information about OSS datacenter and endpoint, please check out <a>https://docs.aliyun.com/#/pub/oss/product-documentation/domain-region</a>
  */
-@property (nonatomic, strong) NSString * location;
+@property (nonatomic, strong) NSString * location __attribute__ ((deprecated));
 
 /**
  Sets Bucket access permission. For now there're three permissions:public-read-write，public-read and private.
@@ -646,26 +640,6 @@ It's a unique Id represents this request. This is used for troubleshooting when 
 @property (nonatomic, strong) NSDictionary * objectMeta;
 @end
 
-/**
- The request class to update the object ACL.
- */
-@interface OSSPutObjectACLRequest : OSSRequest
-
-/**
- Bucket name
- */
-@property (nonatomic, strong) NSString * bucketName;
-
-/**
- Object name
- */
-@property (nonatomic, strong) NSString * objectKey;
-
-/**
- */
-@property (nonatomic, strong) NSString * acl;
-
-@end
 
 /**
  The response class to update the object ACL.
@@ -754,6 +728,24 @@ It's a unique Id represents this request. This is used for troubleshooting when 
  It runs in background thread (not UI thread).
  */
 @property (nonatomic, copy) OSSNetworkingUploadProgressBlock uploadProgress;
+
+/**
+ The upload retry callback.
+ It runs in background thread (not UI thread).
+ */
+@property (nonatomic, copy) OSSNetworkingRetryBlock uploadRetryCallback;
+ 
+@end
+
+/**
+ The request class to update the object ACL.
+ */
+@interface OSSPutObjectACLRequest : OSSPutObjectRequest
+
+/**
+ */
+@property (nonatomic, strong) NSString * acl;
+
 @end
 
 /**
@@ -1246,12 +1238,12 @@ The result class of listing uploaded parts.
 @end
 
 /**
- The request class of resumable upload.
+ The request class of multipart upload.
  */
-@interface OSSResumableUploadRequest : OSSRequest
+@interface OSSMultipartUploadRequest : OSSRequest
 
 /**
- The upload Id 
+ The upload Id
  */
 @property (nonatomic, strong) NSString * uploadId;
 
@@ -1292,17 +1284,43 @@ The result class of listing uploaded parts.
 @property (nonatomic, strong) NSDictionary * callbackVar;
 
 /**
+ Content type
+ */
+@property (nonatomic, strong) NSString * contentType;
+
+/**
  The metadata header
  */
 @property (nonatomic, strong) NSDictionary * completeMetaHeader;
+
+
+- (void)cancel;
+@end
+
+/**
+ The request class of resumable upload.
+ */
+@interface OSSResumableUploadRequest : OSSMultipartUploadRequest
+
+
+/**
+ directory path about create record uploadId file 
+ */
+@property (nonatomic, strong) NSString * recordDirectoryPath;
+
+
+/**
+ need or not delete uploadId with cancel
+ */
+@property (nonatomic, assign) BOOL deleteUploadIdOnCancelling;
 
 /**
  All running children requests
  */
 @property (atomic, weak) OSSRequest * runningChildrenRequest;
 
-- (void)cancel;
 @end
+
 
 /**
  The result class of resumable uploading

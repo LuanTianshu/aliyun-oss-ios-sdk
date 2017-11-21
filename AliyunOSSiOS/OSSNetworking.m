@@ -295,9 +295,8 @@
         NSURLSessionConfiguration * uploadSessionConfig = nil;
 
         if (configuration.enableBackgroundTransmitService) {
-
-        uploadSessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.configuration.backgroundSessionIdentifier];
-        }else{
+            uploadSessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.configuration.backgroundSessionIdentifier];
+        } else {
             uploadSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
         }
         dataSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -391,7 +390,8 @@
         return [requestDelegate buildInternalHttpRequest];
     }] continueWithSuccessBlock:^id(OSSTask *task) {
         NSURLSessionDataTask * sessionTask = nil;
-        if (self.configuration.timeoutIntervalForRequest > 0) {
+        if (self.configuration.timeoutIntervalForRequest > 0)
+        {
             requestDelegate.internalRequest.timeoutInterval = self.configuration.timeoutIntervalForRequest;
         }
 
@@ -495,7 +495,7 @@
             }
             NSString * notSuccessResponseBody = [[NSString alloc] initWithData:delegate.httpRequestNotSuccessResponseBody encoding:NSUTF8StringEncoding];
             OSSLogError(@"http error response: %@", notSuccessResponseBody);
-            NSDictionary * dict = [NSDictionary dictionaryWithXMLString:notSuccessResponseBody];
+            NSDictionary * dict = [NSDictionary oss_dictionaryWithXMLString:notSuccessResponseBody];
 
             return [OSSTask taskWithError:[NSError errorWithDomain:OSSServerErrorDomain
                                                              code:(-1 * httpResponse.statusCode)
@@ -504,6 +504,8 @@
         return task;
     }] continueWithBlock:^id(OSSTask *task) {
         if (task.error) {
+            
+            
             OSSNetworkingRetryType retryType = [delegate.retryHandler shouldRetry:delegate.currentRetryCount
                                                                   requestDelegate:delegate
                                                                          response:httpResponse
@@ -531,9 +533,15 @@
             NSTimeInterval suspendTime = [delegate.retryHandler timeIntervalForRetry:delegate.currentRetryCount retryType:retryType];
             delegate.currentRetryCount++;
             [NSThread sleepForTimeInterval:suspendTime];
+            
+            if(delegate.retryCallback){
+                delegate.retryCallback();
+            }
+            
 
             /* retry recursively */
             [delegate reset];
+            
             [self dataTaskWithDelegate:delegate];
         } else {
             delegate.completionHandler([delegate.responseParser constructResultObject], nil);
